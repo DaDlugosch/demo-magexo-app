@@ -1,7 +1,7 @@
 <template>
   <ProgressBar v-if="isLoading" class="w-1/2 mx-auto"/>
   <section v-else-if="!isCatEmpty">
-    <section class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-8">
+    <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
       <Product v-for="product in products" :key="product.id" :product="product"/>
     </section>
     <section class="mt-10 text-center">
