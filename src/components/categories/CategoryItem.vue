@@ -1,7 +1,7 @@
 <template>
-  <RouterLink :to="url" :class="{ 'active': isActive }">{{
+  <router-link :to="url" :class="{ 'active': isActive }">{{
     data.name
-  }}</RouterLink>
+  }}</router-link>
 </template>
 
 <script setup>

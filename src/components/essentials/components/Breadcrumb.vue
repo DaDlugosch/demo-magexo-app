@@ -2,7 +2,7 @@
   <div class="text-sm breadcrumbs">
     <ul>
       <li v-for="(path, index) in paths" :key="path.uid">
-        <RouterLink :to="'/' + path.url_key" v-if="index < paths.length - 1">{{ path.name }}</RouterLink>
+        <router-link :to="'/' + path.url_key" v-if="index < paths.length - 1">{{ path.name }}</router-link>
         <span v-else class="font-bold">{{ path.name }}</span>
       </li>
     </ul>

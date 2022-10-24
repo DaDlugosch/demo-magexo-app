@@ -11,6 +11,7 @@
 <script setup>
 import {computed} from 'vue';
 import {useRoute} from 'vue-router';
+import axios from 'axios'
 import CategoryList from '@/components/categories/CategoryList.vue';
 import Products from "@/components/products/Products.vue";
 import Breadcrumb from "@/components/essentials/components/Breadcrumb.vue";
@@ -18,8 +19,7 @@ import ModeSwitcher from "@/components/essentials/components/ModeSwitcher.vue";
 
 const route = useRoute();
 
-const catRes = await fetch('https://api.venia.hosts.sk/api/prd/categories/all');
-const {categoryList: [{children: categories}]} = await catRes.json();
+const {data: { categoryList: [{children: categories}]}} = await axios.get('https://api.venia.hosts.sk/api/prd/categories/all');
 
 const catPathHierarchy = computed(() => {
   const pathsArr = []
