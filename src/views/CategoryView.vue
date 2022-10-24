@@ -10,6 +10,6 @@
 </template>
 
 <script setup>
-import ContentPage from '@/components/essentials/ContentPage.vue';
-import ProgressBar from '@/components/essentials/ProgressBar.vue';
+import ContentPage from '@/components/essentials/parts/ContentPage.vue';
+import ProgressBar from '@/components/essentials/components/ProgressBar.vue';
 </script>

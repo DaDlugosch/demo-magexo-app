@@ -1,10 +1,10 @@
 <template>
-  <ProgressBar v-if="isLoading" classes="my-8 w-1/2 mx-auto"/>
+  <ProgressBar v-if="isLoading" class="w-1/2 mx-auto"/>
   <section v-else-if="!isCatEmpty">
-    <section class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-6 py-8">
+    <section class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-8">
       <Product v-for="product in products" :key="product.id" :product="product"/>
     </section>
-    <section class="text-center">
+    <section class="mt-10 text-center">
       <Pagination :active="+route.query.page || 1" :pages="maxPages"/>
     </section>
   </section>
@@ -15,8 +15,8 @@
 import {ref, computed, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 import Product from '@/components/products/Product.vue'
-import Pagination from '@/components/essentials/Pagination.vue'
-import ProgressBar from "@/components/essentials/ProgressBar.vue";
+import Pagination from '@/components/essentials/components/Pagination.vue'
+import ProgressBar from "@/components/essentials/components/ProgressBar.vue";
 import InfoAlert from "@/components/alerts/InfoAlert.vue";
 
 const props = defineProps(['category'])
@@ -24,7 +24,7 @@ const props = defineProps(['category'])
 const products = ref([]);
 const maxPages = ref(0);
 const isLoading = ref(false)
-const isCatEmpty = computed(() => Object.keys(props.category).length === 0)
+const isCatEmpty = computed(() => props.category?.length === 0)
 const router = useRouter();
 const route = useRoute();
 
@@ -32,14 +32,14 @@ const route = useRoute();
 if (isCatEmpty.value && Object.values(route.params).length) router.push('/');
 
 const processData = async () => {
-  const prodRes = await fetch(`https://api.venia.hosts.sk/api/prd/categories/${props.category.uid}/products/${route.query.page || 1}`);
+  const prodRes = await fetch(`https://api.venia.hosts.sk/api/prd/categories/${props.category[0].uid}/products/${route.query.page || 1}`);
   const {products: {items, page_info}} = await prodRes.json();
   maxPages.value = page_info.total_pages
   products.value = [...items];
 }
 
 const loadProducts = async () => {
-  if (Object.keys(props.category).length === 0) return;
+  if (isCatEmpty.value) return;
   isLoading.value = true
   try {
     await processData()

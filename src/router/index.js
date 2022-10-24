@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
+
 const CategoryView = () => import('@/views/CategoryView.vue')
 const NotFoundView = () => import('@/views/NotFoundView.vue')
 
@@ -9,6 +10,10 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: CategoryView
+        },
+        {
+            path: '/home',
+            redirect: '/'
         },
         {
             path: '/:category',
