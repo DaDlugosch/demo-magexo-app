@@ -20,15 +20,15 @@ import {computed} from 'vue'
 const props = defineProps(['product'])
 
 const product = computed(() => {
-  const minPrice = props.product.price_range.minimum_price.final_price.value
-  const maxPrice = props.product.price_range.maximum_price.final_price.value
+  const minPrice = props.product?.price_range?.minimum_price?.final_price?.value
+  const maxPrice = props.product?.price_range?.maximum_price?.final_price?.value
   let hasDiffPrice = false
 
-  if (minPrice !== maxPrice) hasDiffPrice = true
+  if (minPrice !== maxPrice && minPrice !== undefined && maxPrice !== undefined) hasDiffPrice = true
 
   return {
-    name: props.product.name,
-    image: props.product.image.url,
+    name: props.product?.name,
+    image: props.product?.image?.url,
     hasDiffPrice,
     minPrice,
     maxPrice

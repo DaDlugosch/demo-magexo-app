@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="categories.length">
+  <nav>
     <ul class="inline-block menu menu-compact md:menu-horizontal bg-base-100">
       <li v-for="category in categories" :key="category.uid">
         <CategoryItem :data="category"/>

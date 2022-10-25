@@ -29,12 +29,7 @@ describe('CategoryList.vue', async () => {
         mockRouter.reset()
     })
 
-    test('Hide nav if categories aren\'t present', async () => {
-        await wrapper.setProps({categories: []})
-        expect(wrapper.html()).not.toContain('router-link-stub')
-    })
-
-    test('List all categories links if they\'re present', () => {
+    test('List all categories links', () => {
         const getAllCatLength = () => {
             const catLength = wrapper.props('categories').length
             const subCatLength = () => {

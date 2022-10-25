@@ -1,6 +1,6 @@
 <template>
   <header class="mb-20 mx-auto object-contain w-full max-w-sm">
-    <RouterLink to="/">
+    <router-link to="/">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 357.26 64">
         <g id="Outlines">
           <g id="Outlines-2" data-name="Outlines">
@@ -27,6 +27,6 @@
         </g>
       </svg
       >
-    </RouterLink>
+    </router-link>
   </header>
 </template>

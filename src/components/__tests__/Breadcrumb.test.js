@@ -29,7 +29,7 @@ describe('Breadcrumb.vue', () => {
         expect(liArr[0].html()).toContain(routerArr[0].html())
     })
 
-    test('Links are showed properly', () => {
+    test('Links are shown properly', () => {
         expect(liArr).toHaveLength(wrapper.props('paths').length + 1)
         expect(routerArr).toHaveLength(wrapper.props('paths').length)
     })

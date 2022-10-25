@@ -1,5 +1,5 @@
 <template>
-  <CategoryList :categories="categories"/>
+  <CategoryList v-if="categories.length" :categories="categories"/>
   <div class="divider"></div>
   <section class="grid mt-5" :class="[catPathHierarchy.length ? 'grid-cols-6' : 'grid-cols-1']">
     <Breadcrumb v-show="catPathHierarchy.length" class="col-span-5" :paths="catPathHierarchy"/>

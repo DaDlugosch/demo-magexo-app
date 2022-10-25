@@ -14,6 +14,7 @@
 <script setup>
 import {ref, computed, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
+import axios from 'axios'
 import Product from '@/components/products/Product.vue'
 import Pagination from '@/components/essentials/components/Pagination.vue'
 import ProgressBar from "@/components/essentials/components/ProgressBar.vue";
@@ -32,8 +33,14 @@ const route = useRoute();
 if (isCatEmpty.value && Object.values(route.params).length) router.push('/');
 
 const processData = async () => {
-  const prodRes = await fetch(`https://api.venia.hosts.sk/api/prd/categories/${props.category[0].uid}/products/${route.query.page || 1}`);
-  const {products: {items, page_info}} = await prodRes.json();
+  const {
+    data: {
+      products: {
+        items,
+        page_info
+      }
+    }
+  } = await axios.get(`https://api.venia.hosts.sk/api/prd/categories/${props.category[0].uid}/products/${route.query.page || 1}`);
   maxPages.value = page_info.total_pages
   products.value = [...items];
 }
