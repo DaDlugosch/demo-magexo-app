@@ -56,13 +56,13 @@ const loadProducts = async () => {
   }
 }
 
-await loadProducts()
-
 watch(
     [() => props.category, () => route.query.page],
     async ([newCat, newQ], [prevCat, prevQ]) => {
       if (newCat !== prevCat || newQ !== prevQ && newQ) {
         await loadProducts()
       }
+    }, {
+      immediate: true
     })
 </script>

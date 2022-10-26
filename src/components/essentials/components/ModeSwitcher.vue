@@ -1,6 +1,6 @@
 <template>
   <label class="swap swap-rotate">
-    <input v-model="darkMode" type="checkbox" :checked="isDarkMode"/>
+    <input v-model="darkMode" type="checkbox"/>
 
     <!-- sun icon -->
     <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -18,18 +18,22 @@
 </template>
 
 <script setup>
-import {ref, computed, watch} from 'vue';
+import {ref, watch} from 'vue'
 
-const darkMode = ref();
-const isDarkMode = computed(() => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+const darkModeObj = window.matchMedia('(prefers-color-scheme: dark)');
+const darkMode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
 watch(darkMode, () => {
   if (darkMode.value) {
     document.documentElement.setAttribute("data-theme", "dark")
-    document.documentElement.classList.toggle('dark')
+    document.documentElement.classList.add('dark')
   } else {
     document.documentElement.setAttribute("data-theme", "light")
-    document.documentElement.classList.toggle('dark')
+    document.documentElement.classList.remove('dark')
   }
+})
+
+darkModeObj.addEventListener('change', () => {
+  darkMode.value = !darkMode.value
 })
 </script>
