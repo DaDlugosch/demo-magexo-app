@@ -71,20 +71,4 @@ describe('Products.vue', () => {
 
         expect(wrapper.classes()).not.toContain('alert')
     })
-
-    test('Show progress-bar while loading and hide alertbox', async () => {
-        const SusComponent = defineComponent({
-            components: {
-                Products
-            },
-            template: '<Suspense><Products/></Suspense>'
-        })
-
-        wrapper = mount(SusComponent)
-
-        await flushPromises()
-
-        expect(wrapper.get('progress')).toBeDefined()
-        expect(wrapper.classes()).not.toContain('alert')
-    })
 })
