@@ -1,5 +1,5 @@
 <template>
-  <header class="mb-20 mx-auto object-contain w-full max-w-sm">
+  <header class="mb-12 md:mb-16 mx-auto object-contain w-10/12 max-w-sm">
     <router-link to="/">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 357.26 64">
         <g id="Outlines">

@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="url" :class="{ 'active': isActive }">{{
+  <router-link :to="url" :class="{ 'active': isActive }" @click="$emit('routeChange')">{{
     data.name
   }}</router-link>
 </template>
